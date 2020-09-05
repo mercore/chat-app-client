@@ -1,0 +1,14 @@
+.join {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  .container {
+    &.inner {
+      background-color: $white;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 20px 1px rgba($black, 0.1);
+    }
+  }
+}

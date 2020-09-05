@@ -1,0 +1,115 @@
+.chat {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  .content {
+    box-shadow: 0 0 20px 1px rgba($black, 0.1);
+    background-color: transparent;
+    border-radius: 5px;
+  }
+
+  .info-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $blue;
+    padding: 15px;
+    border-radius: 5px 5px 0 0;
+
+    h3 {
+      margin: 0;
+      color: $white;
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+      font-size: 24px;
+    }
+  }
+  
+  .messages {
+    min-height: 500px;
+    background-color: $white;
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+  }
+
+  .message {
+    display: flex;
+    margin-bottom: 10px;
+
+    &.left {
+      justify-content: flex-start;
+
+      .message-inner {
+        align-items: flex-start;
+      }
+
+      .message-text {
+        background-color: $grey;
+        color: $black;
+      }
+    }
+
+    &.center {
+      justify-content: center;
+    }
+
+    &.right {
+      justify-content: flex-end;
+
+      .message-inner {
+        align-items: flex-end;
+      }
+    }
+  }
+
+  .message-admin {
+    color: $light-blue;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .message-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .message-user {
+    font-size: 14px;
+    margin: 0 0 5px 0;
+  }
+
+  .message-text {
+    background-color: $blue;
+    color: $white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .message-typing {
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  .input-field {
+    position: relative;
+
+    input {
+      border-radius: 0;
+    }
+
+    .button {
+      border-radius: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      max-width: 100px;
+    }
+  }
+}
