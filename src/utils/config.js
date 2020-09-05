@@ -1,3 +1,4 @@
 export default {
-  SERVER: 'http://localhost:5000'
+  SERVER: 'https://mercoreioan-chat-app-server.herokuapp.com/'
+  // SERVER: 'http://localhost:5000'
 }
