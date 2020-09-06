@@ -7,7 +7,7 @@ import ReactEmoji from 'react-emoji';
 
 var socket, timer
 
-const Chat = ({ location }) => {
+const Chat = ({ location, history }) => {
 
   const [typing, setTyping] = useState('')
   const [name, setName] = useState('')
@@ -16,6 +16,12 @@ const Chat = ({ location }) => {
 
   // get name from query param
   useEffect(() => {
+
+    // if no name, redirect to first page
+    if(!location.search) {
+      history.replace('/')
+    }
+
     const { name } = queryString.parse(location.search)
     setName(name)
 
@@ -26,7 +32,7 @@ const Chat = ({ location }) => {
     return () => {
       socket.emit('leave', name)
     }
-  }, [location.search])
+  }, [location.search, history])
 
   // when receive message, add it to messages state
   useEffect(() => {
