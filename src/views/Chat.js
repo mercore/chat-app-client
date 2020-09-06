@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import config from '../utils/config';
+import ScrollToBottom from 'react-scroll-to-bottom';
+import ReactEmoji from 'react-emoji';
 
 var socket, timer
 
@@ -82,34 +84,36 @@ const Chat = ({ location }) => {
             <h3>Chat App</h3>
             <a href="/">&times;</a>
           </div>
-          <div className="messages">
-            {
-              messages.length ?
-                messages.map((message, id) => (
-                  <div key={ id } className={ message.user === name ? 'message right' : message.user === 'admin' ? 'message center' : 'message left' }>
-                    {
-                      message.user === 'admin' ?
-                        <div className="message-inner">
-                          <p className="message-admin">{ message.text }</p>
-                        </div>
-                      :
-                        <div className="message-inner">
-                          <p className="message-user">{ message.user }</p>
-                          <p className="message-text">{ message.text }</p>
-                        </div>
-                    }
-                  </div>
-                ))
-              :
-                null
-            }
-            {
-              typing ? 
-                <p className="message-typing">{ typing }</p>
-              :
-                null
-            }
-          </div>
+          <ScrollToBottom className="messages-container">
+            <div className="messages">
+              {
+                messages.length ?
+                  messages.map((message, id) => (
+                    <div key={ id } className={ message.user === name ? 'message right' : message.user === 'admin' ? 'message center' : 'message left' }>
+                      {
+                        message.user === 'admin' ?
+                          <div className="message-inner">
+                            <p className="message-admin">{ message.text }</p>
+                          </div>
+                        :
+                          <div className="message-inner">
+                            <p className="message-user">{ message.user }</p>
+                            <p className="message-text">{ ReactEmoji.emojify(message.text) }</p>
+                          </div>
+                      }
+                    </div>
+                  ))
+                :
+                  null
+              }
+              {
+                typing ? 
+                  <p className="message-typing">{ typing }</p>
+                :
+                  null
+              }
+            </div>
+          </ScrollToBottom>
           <form onSubmit={ e => handleSendMessage(e) }>
             <div className="input-field">
               <input type="text" value={ message } onChange={ e => setMessage(e.target.value) } />

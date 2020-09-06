@@ -28,10 +28,13 @@
       font-size: 24px;
     }
   }
+
+  .messages-container {
+    background-color: $white;
+    height: 300px;
+  }
   
   .messages {
-    min-height: 500px;
-    background-color: $white;
     border-radius: 0 0 5px 5px;
     padding: 10px;
   }
